@@ -1,8 +1,12 @@
 # Laravel Nova TinyMCE editor (with images upload capabilities!)
 
-This Nova package allow you to use [TinyMCE editor](https://tiny.cloud) for text areas.You can customize the editor options and... you can **upload images to your server** and put them rigth there on the text without leaving the text editor!!
+This Nova package allow you to use [TinyMCE editor](https://tiny.cloud) for text areas. You can customize the editor options and... you can **upload images to your server** and put them rigth there on the text without leaving the text editor!!
 
 ## Installation
+
+```shell
+composer require emilianotisato/nova-tinymce
+```
 
 In order to work with this editor you need to [create a free account](https://apps.tiny.cloud/signup/) to get the editor API_KEY. Once you have don this, create this key inside your `config/nova.php` file
 
@@ -33,6 +37,7 @@ use Emilianotisato\NovaTinyMCE\NovaTinyMCE;
             ID::make()->sortable(),
 
             NovaTinyMCE::make('body'),
+        ];
     }
 ```
 
