@@ -1,9 +1,11 @@
 {
-    "name": "emilianotisato/Nova-TinyMCE",
-    "description": "A Laravel Nova field.",
+    "name": "emilianotisato/nova-tinymce",
+    "description": "This Nova package allow you to use TinyMCE editor for text areas.You can customize the editor options and... you can upload images to your server and put them rigth there on the text without leaving the text editor!",
     "keywords": [
         "laravel",
-        "nova"
+        "nova",
+        "editor",
+        "tiny"
     ],
     "license": "MIT",
     "require": {
