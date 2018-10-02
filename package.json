@@ -15,6 +15,7 @@
         "laravel-nova": "^1.0"
     },
     "dependencies": {
+        "@tinymce/tinymce-vue": "^1.1.0",
         "vue": "^2.5.0"
     }
 }

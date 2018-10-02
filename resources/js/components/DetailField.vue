@@ -1,5 +1,11 @@
 <template>
-    <panel-item :field="field" />
+    <panel-item :field="field">
+        <template slot="value">
+            <excerpt>
+            	<div v-html="field.value" />
+            </excerpt>
+        </template>
+    </panel-item>
 </template>
 
 <script>
