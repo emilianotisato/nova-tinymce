@@ -1,9 +1,7 @@
 <template>
     <panel-item :field="field">
         <template slot="value">
-            <excerpt>
-            	<div v-html="field.value" />
-            </excerpt>
+            <div v-html="field.value" />
         </template>
     </panel-item>
 </template>
