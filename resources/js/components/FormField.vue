@@ -1,5 +1,5 @@
 <template>
-    <default-field :field="field">
+    <default-field :field="field" :full-width-content="true">
         <template slot="field">
             <editor :api-key="tinymce_api_key"
                     :id="field.name" 
