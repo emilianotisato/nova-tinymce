@@ -6,6 +6,9 @@ use Laravel\Nova\Fields\Field;
 
 class NovaTinyMCE extends Field
 {
+    
+    public $showOnIndex = false;
+    
     /**
      * The field's component.
      *
