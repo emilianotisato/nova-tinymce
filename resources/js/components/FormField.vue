@@ -2,7 +2,7 @@
     <default-field :field="field" :full-width-content="true">
         <template slot="field">
             <editor :api-key="tinymce_api_key"
-                    :id="field.name" 
+                    :id="field.attribute" 
                     v-model="value" 
                     :class="errorClasses"
                     :placeholder="field.name"

@@ -16,25 +16,27 @@ class NovaTinyMCE extends Field
      */
     public $component = 'Nova-TinyMCE';
 
-        public function __construct(string $name, ?string $attribute = null, ?mixed $resolveCallback = null)
+    public function __construct(string $name, ?string $attribute = null, ?mixed $resolveCallback = null)
     {
         parent::__construct($name, $attribute, $resolveCallback);
 
-        $this->withMeta([
+        $this->withMeta(
+            [
             'options' => [
-                'path_absolute' => '/',
-                'plugins' => [
-                    'lists preview hr anchor pagebreak',
-                    'wordcount fullscreen',
-                    'contextmenu directionality',
-                    'paste textcolor colorpicker textpattern'
-                ],
-                'toolbar' => 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link',
-                'relative_urls' => false,
-                'use_lfm' => false,
-                'lfm_url' => 'laravel-filemanager'
+            'path_absolute' => '/',
+            'plugins' => [
+                'lists preview hr anchor pagebreak',
+                'wordcount fullscreen',
+                'contextmenu directionality',
+                'paste textcolor colorpicker textpattern'
+            ],
+            'toolbar' => 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link',
+            'relative_urls' => false,
+            'use_lfm' => false,
+            'lfm_url' => 'laravel-filemanager'
             ]
-        ]);
+            ]
+        );
     }
 
     /**
@@ -42,15 +44,17 @@ class NovaTinyMCE extends Field
      * Consult the TinyMCE documentation [https://github.com/tinymce/tinymce-vue]
      * to view the list of all the available options.
      *
-     * @param  array  $options
+     * @param  array $options
      * @return self
      */
     public function options(array $options)
     {
         $currentOptions = $this->meta['options'];
         
-        return $this->withMeta([
+        return $this->withMeta(
+            [
             'options' => array_merge($currentOptions, $options)
-        ]);
+            ]
+        );
     }
 }
