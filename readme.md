@@ -58,10 +58,6 @@ NovaTinyMCE::make('body')->options([
 Now if you need to upload images from the text editor, we need to install [UniSharp Laravel Filemanager](https://unisharp.github.io/laravel-filemanager/installation), and pass the `use_lfm` key to your options array:
 
 ```php
-// with the defaoult options
-NovaTinyMCE::make('body')->options(['use_lfm' => true]),
-
-// or with other options
 NovaTinyMCE::make('body')->options([
                 'plugins' => [
                     'advlist autolink lists link image charmap print preview hr anchor pagebreak',
@@ -72,5 +68,13 @@ NovaTinyMCE::make('body')->options([
                 'toolbar' => 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media',
                 'use_lfm' => true
                 ]),
+```
 
+In case you change the `laravel-filemanager` URL in the package config file, you need to pass that info to this nova field with the `lfm_url` key in the options array.
+
+```php
+// ...
+    'use_lfm' => true,
+    'lfm_url' => 'laravel-filemanager'
+// ...
 ```
