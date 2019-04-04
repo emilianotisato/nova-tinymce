@@ -78,3 +78,18 @@ In case you change the `laravel-filemanager` URL in the package config file, you
     'lfm_url' => 'laravel-filemanager'
 // ...
 ```
+
+### Extra configuration and plugin customization
+
+You can virtually pass any configuration option for the javascript SDK to the array in the `options()` method.
+
+For example, you like to have increased the height of the text area:
+
+```php
+            NovaTinyMCE::make('body')->options([
+                'height' => '980'
+                ]),
+```
+
+You can see the full list of parameters in the docs:
+[https://www.tiny.cloud/docs-3x/reference/Configuration3x/](https://www.tiny.cloud/docs-3x/reference/Configuration3x/)
