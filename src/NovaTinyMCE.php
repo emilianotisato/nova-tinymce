@@ -3,12 +3,14 @@
 namespace Emilianotisato\NovaTinyMCE;
 
 use Laravel\Nova\Fields\Field;
+use Laravel\Nova\Fields\Expandable;
 
 class NovaTinyMCE extends Field
 {
-    
+    use Expandable;
+
     public $showOnIndex = false;
-    
+
     /**
      * The field's component.
      *
@@ -50,11 +52,23 @@ class NovaTinyMCE extends Field
     public function options(array $options)
     {
         $currentOptions = $this->meta['options'];
-        
+
         return $this->withMeta(
             [
             'options' => array_merge($currentOptions, $options)
             ]
         );
+    }
+
+    /**
+     * Prepare the element for JSON serialization.
+     *
+     * @return array
+     */
+    public function jsonSerialize()
+    {
+        return array_merge(parent::jsonSerialize(), [
+            'shouldShow' => $this->shouldBeExpanded(),
+        ]);
     }
 }
