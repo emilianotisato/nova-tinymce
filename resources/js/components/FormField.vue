@@ -27,10 +27,6 @@ export default {
     props: ['resourceName', 'resourceId', 'field'],
 
     computed: {
-        tinymce_api_key() {
-            return Nova.config.tinymce_api_key
-        },
-        
         options() {
             let options = this.field.options
 
