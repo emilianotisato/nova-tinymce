@@ -7,6 +7,10 @@ This Nova package allow you to use [TinyMCE editor](https://tiny.cloud) for text
 ```shell
 composer require emilianotisato/nova-tinymce
 ```
+Run the command bellow, to publish TinyMCE JavaScript and CSS assets.
+```shell
+php artisan vendor:publish --provider="Emilianotisato\NovaTinyMCE\FieldServiceProvider"
+```
 
 ## Usage
 
