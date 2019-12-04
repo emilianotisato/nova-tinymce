@@ -58,6 +58,18 @@ class NovaTinyMCE extends Field
     }
 
     /**
+     * Set the field id html attribute.
+     *
+     * @return $this
+     */
+    public function id($id)
+    {
+        $this->withMeta(['id' => $id]);
+
+        return $this;
+    }
+
+    /**
      * Prepare the element for JSON serialization.
      *
      * @return array
