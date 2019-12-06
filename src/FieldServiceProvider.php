@@ -15,12 +15,14 @@ class FieldServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->publishes([
+            realpath(__DIR__ . '/../dist/tinymce') => public_path('vendor/tinymce'),
+        ], 'public');
+
         Nova::serving(function (ServingNova $event) {
+            Nova::script('Nova-TinyMCE-tinymce', __DIR__.'/../dist/js/tinymce.js');
             Nova::script('Nova-TinyMCE', __DIR__.'/../dist/js/field.js');
             Nova::style('Nova-TinyMCE', __DIR__.'/../dist/css/field.css');
-            Nova::provideToScript([
-                'tinymce_api_key' => config('nova.tinymce_api_key'),
-            ]);
         });
     }
 

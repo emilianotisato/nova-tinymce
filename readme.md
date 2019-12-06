@@ -7,14 +7,10 @@ This Nova package allow you to use [TinyMCE editor](https://tiny.cloud) for text
 ```shell
 composer require emilianotisato/nova-tinymce
 ```
-
-In order to work with this editor you need to [create a free account](https://apps.tiny.cloud/signup/) to get the editor API_KEY. Once you have don this, create this key inside your `config/nova.php` file
-
+Run the command bellow, to publish TinyMCE JavaScript and CSS assets.
+```shell
+php artisan vendor:publish --provider="Emilianotisato\NovaTinyMCE\FieldServiceProvider"
 ```
-    'tinymce_api_key' => env('TINYMCE_API_KEY'),
-```
-
-and add the `TINYMCE_API_KEY` to your .env file with the key from tiny.cloud website.
 
 ## Usage
 
@@ -55,6 +51,9 @@ NovaTinyMCE::make('body')->options([
 
 ### Using the upload images feature
 
+#### Warning
+In order to use image upload capabilities with TinyMCE 5, see [this issue comment](https://github.com/UniSharp/laravel-filemanager/issues/759#issuecomment-487258426).
+
 Now if you need to upload images from the text editor, we need to install [UniSharp Laravel Filemanager](https://unisharp.github.io/laravel-filemanager/installation), and pass the `use_lfm` key to your options array:
 
 ```php
@@ -92,4 +91,4 @@ For example, you like to have increased the height of the text area:
 ```
 
 You can see the full list of parameters in the docs:
-[https://www.tiny.cloud/docs-3x/reference/Configuration3x/](https://www.tiny.cloud/docs-3x/reference/Configuration3x/)
+[https://www.tiny.cloud/docs/configure/](https://www.tiny.cloud/docs/configure/)

@@ -1,9 +1,8 @@
 <template>
     <default-field :field="field" :full-width-content="true">
         <template slot="field">
-            <editor :api-key="tinymce_api_key"
-                    :id="field.attribute" 
-                    v-model="value" 
+            <editor :id="field.attribute"
+                    v-model="value"
                     :class="errorClasses"
                     :placeholder="field.name"
                     :init="options"
@@ -28,15 +27,11 @@ export default {
     props: ['resourceName', 'resourceId', 'field'],
 
     computed: {
-        tinymce_api_key() {
-            return Nova.config.tinymce_api_key
-        },
-        
         options() {
             let options = this.field.options
 
             if (options.use_lfm) {
-                options['file_browser_callback'] = this.filemanager
+                options['file_picker_callback'] = this.filePicker
             }
 
             return options
@@ -65,24 +60,21 @@ export default {
           this.value = value
         },
 
-        filemanager(field_name, url, type, win) {
+        filePicker: function (callback, value, meta) {
             let x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
             let y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
 
-            let cmsURL = this.options.path_absolute + this.options.lfm_url + '?field_name=' + field_name;
-            if (type == 'image') {
-                cmsURL = cmsURL + '&type=Images';
-            } else {
-                cmsURL = cmsURL + '&type=Files';
-            }
+            let type = 'image' === meta.filetype ? 'Images' : 'Files';
+            let url  = this.options.path_absolute + this.options.lfm_url + '?editor=tinymce5&type=' + type;
 
-            tinyMCE.activeEditor.windowManager.open({
-                file : cmsURL,
-                title : 'Filemanager',
+            tinymce.activeEditor.windowManager.openUrl({
+                url : url,
+                title : 'File manager',
                 width : x * 0.8,
                 height : y * 0.8,
-                resizable : 'yes',
-                close_previous : 'no'
+                onMessage: (api, message) => {
+                    callback(message.content);
+                }
             });
         }
 

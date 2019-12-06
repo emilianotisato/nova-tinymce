@@ -22,23 +22,23 @@ class NovaTinyMCE extends Field
     {
         parent::__construct($name, $attribute, $resolveCallback);
 
-        $this->withMeta(
-            [
-            'options' => [
-            'path_absolute' => '/',
-            'plugins' => [
-                'lists preview hr anchor pagebreak',
-                'wordcount fullscreen',
-                'contextmenu directionality',
-                'paste textcolor colorpicker textpattern'
-            ],
-            'toolbar' => 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link',
-            'relative_urls' => false,
-            'use_lfm' => false,
-            'lfm_url' => 'laravel-filemanager'
-            ]
-            ]
-        );
+        $this->withMeta([
+                'options' => [
+                    'content_css' => '/vendor/tinymce/skins/ui/oxide/content.min.css',
+                    'skin_url' => '/vendor/tinymce/skins/ui/oxide',
+                    'path_absolute' => '/',
+                    'plugins' => [
+                        'lists preview hr anchor pagebreak',
+                        'wordcount fullscreen',
+                        'contextmenu directionality',
+                        'paste textcolor colorpicker textpattern'
+                    ],
+                    'toolbar' => 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link',
+                    'relative_urls' => false,
+                    'use_lfm' => false,
+                    'lfm_url' => 'laravel-filemanager'
+                ]
+            ]);
     }
 
     /**
