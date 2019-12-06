@@ -541,30 +541,36 @@ button::-moz-focus-inner {
   background-color: inherit;
   color: contrast(inherit, #2A3746, #fff);
 }
-.tox .tox-collection--list .tox-collection__item--active:not(.tox-collection__item--state-disabled) {
+.tox .tox-collection--list .tox-collection__item--active {
   background-color: #4a5562;
-  color: #fff;
 }
 .tox .tox-collection--toolbar .tox-collection__item--enabled {
   background-color: #757d87;
   color: #fff;
 }
-.tox .tox-collection--toolbar .tox-collection__item--active:not(.tox-collection__item--state-disabled) {
+.tox .tox-collection--toolbar .tox-collection__item--active {
   background-color: #4a5562;
-  color: #fff;
 }
 .tox .tox-collection--grid .tox-collection__item--enabled {
   background-color: #757d87;
   color: #fff;
 }
-.tox .tox-collection--grid .tox-collection__item--active:not(.tox-collection__item--state-disabled) {
+.tox .tox-collection--grid .tox-collection__item--active {
   background-color: #4a5562;
+}
+.tox .tox-collection--list .tox-collection__item--active:not(.tox-collection__item--state-disabled) {
+  color: #fff;
+}
+.tox .tox-collection--toolbar .tox-collection__item--active:not(.tox-collection__item--state-disabled) {
+  color: #fff;
+}
+.tox .tox-collection--grid .tox-collection__item--active:not(.tox-collection__item--state-disabled) {
   color: #fff;
 }
 .tox .tox-collection__item--state-disabled {
   background-color: transparent;
   color: rgba(255, 255, 255, 0.5);
-  cursor: default;
+  cursor: not-allowed;
 }
 .tox .tox-collection__item-icon {
   align-items: center;
@@ -2293,7 +2299,10 @@ body.tox-dialog__disable-scroll {
   height: 10px;
   position: absolute;
   width: 10px;
-  z-index: 10000;
+}
+.tox.tox-platform-touch .tox-selector {
+  height: 12px;
+  width: 12px;
 }
 .tox .tox-slider {
   align-items: center;
@@ -2624,9 +2633,6 @@ body.tox-dialog__disable-scroll {
 .tox .tox-split-button__chevron svg {
   fill: rgba(255, 255, 255, 0.5);
 }
-.tox .tox-pop .tox-split-button__chevron svg {
-  transform: rotate(-90deg);
-}
 .tox .tox-split-button .tox-tbtn {
   margin: 0;
 }
@@ -2671,16 +2677,15 @@ body.tox-dialog__disable-scroll {
 .tox .tox-toolbar__overflow--shrinking {
   transition: opacity 0.3s ease, height 0.2s linear 0.1s, visibility 0s linear 0.3s;
 }
+.tox .tox-toolbar--scrolling {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
 .tox .tox-pop .tox-toolbar {
   border-width: 0;
 }
 .tox .tox-toolbar--no-divider {
   background-image: none;
-}
-.tox.tox-platform-touch .tox-editor-container .tox-toolbar,
-.tox.tox-tinymce-aux.tox-platform-touch .tox-toolbar {
-  flex-wrap: nowrap;
-  overflow-x: auto;
 }
 .tox.tox-tinymce-aux .tox-toolbar__overflow {
   background-color: #222f3e;
@@ -2701,8 +2706,8 @@ body.tox-dialog__disable-scroll {
 .tox .tox-toolbar__group--pull-right {
   margin-left: auto;
 }
-.tox.tox-platform-touch .tox-editor-container .tox-toolbar__group,
-.tox.tox-tinymce-aux.tox-platform-touch .tox-toolbar__group {
+.tox .tox-toolbar--scrolling .tox-toolbar__group {
+  flex-shrink: 0;
   flex-wrap: nowrap;
 }
 .tox:not([dir=rtl]) .tox-toolbar__group:not(:last-of-type) {

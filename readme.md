@@ -37,7 +37,8 @@ use Emilianotisato\NovaTinyMCE\NovaTinyMCE;
     }
 ```
 
-By default, the editor comes with default options and the image without the filemanager.
+By default, the editor comes with some basic options and the image management without the filemanager (pure base64 encodign into your database text column).
+
 You can use custome options like this:
 
 ```php
