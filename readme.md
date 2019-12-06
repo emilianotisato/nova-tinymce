@@ -37,40 +37,38 @@ use Emilianotisato\NovaTinyMCE\NovaTinyMCE;
     }
 ```
 
-By default, the editor comes with some basic options and the image management without the filemanager (pure base64 encodign into your database text column).
+By default, the editor comes with some basic options and the image management without the filemanager (inserted just as links).
 
 You can use custome options like this:
 
 ```php
 NovaTinyMCE::make('body')->options([
                 'plugins' => [
-                    'advlist autolink lists link image charmap print preview hr anchor pagebreak'
+                    'lists preview hr anchor pagebreak image wordcount fullscreen directionality paste textpattern'
                 ],
-                'toolbar' => 'insertfile undo redo | styleselect | bold italic'
+                'toolbar' => 'undo redo | styleselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | image | bullist numlist outdent indent | link'
             ]),
 ```
 
 ### Using the upload images feature
-
-#### Warning
-In order to use image upload capabilities with TinyMCE 5, see [this issue comment](https://github.com/UniSharp/laravel-filemanager/issues/759#issuecomment-487258426).
 
 Now if you need to upload images from the text editor, we need to install [UniSharp Laravel Filemanager](https://unisharp.github.io/laravel-filemanager/installation), and pass the `use_lfm` key to your options array:
 
 ```php
 NovaTinyMCE::make('body')->options([
                 'plugins' => [
-                    'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-                    'searchreplace wordcount visualblocks visualchars code fullscreen',
-                    'insertdatetime media nonbreaking save table contextmenu directionality',
-                    'emoticons template paste textcolor colorpicker textpattern'
+                    'lists preview hr anchor pagebreak image wordcount fullscreen directionality paste textpattern'
                 ],
-                'toolbar' => 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media',
+                'toolbar' => 'undo redo | styleselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | image | bullist numlist outdent indent | link',
                 'use_lfm' => true
-                ]),
+            ]),
 ```
 
-In case you change the `laravel-filemanager` URL in the package config file, you need to pass that info to this nova field with the `lfm_url` key in the options array.
+The last step is to run this command to fix some Filemanager files: `php artisan nova-tinymcs:suport-lfm`
+
+*IMPORTANT:* if you are in laravel 6 you will need to import the helper lib cos Filemanager need them: `composer require laravel/helpers`.
+
+Optional, in case you change the `laravel-filemanager` URL in the package config file, you need to pass that info to this nova field with the `lfm_url` key in the options array.
 
 ```php
 // ...
