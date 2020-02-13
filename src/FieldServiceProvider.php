@@ -5,6 +5,7 @@ namespace Emilianotisato\NovaTinyMCE;
 use Laravel\Nova\Nova;
 use Laravel\Nova\Events\ServingNova;
 use Illuminate\Support\ServiceProvider;
+use Emilianotisato\NovaTinyMCE\Console\SupportFileManagerCommand;
 
 class FieldServiceProvider extends ServiceProvider
 {
@@ -15,13 +16,21 @@ class FieldServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->publishes([
+            realpath(__DIR__ . '/../dist/tinymce') => public_path('vendor/tinymce'),
+        ], 'public');
+
         Nova::serving(function (ServingNova $event) {
+            Nova::script('Nova-TinyMCE-tinymce', __DIR__.'/../dist/js/tinymce.js');
             Nova::script('Nova-TinyMCE', __DIR__.'/../dist/js/field.js');
             Nova::style('Nova-TinyMCE', __DIR__.'/../dist/css/field.css');
-            Nova::provideToScript([
-                'tinymce_api_key' => config('nova.tinymce_api_key'),
-            ]);
         });
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                SupportFileManagerCommand::class
+            ]);
+        }
     }
 
     /**

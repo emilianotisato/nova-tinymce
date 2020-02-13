@@ -7,14 +7,10 @@ This Nova package allow you to use [TinyMCE editor](https://tiny.cloud) for text
 ```shell
 composer require emilianotisato/nova-tinymce
 ```
-
-In order to work with this editor you need to [create a free account](https://apps.tiny.cloud/signup/) to get the editor API_KEY. Once you have don this, create this key inside your `config/nova.php` file
-
+Run the command bellow, to publish TinyMCE JavaScript and CSS assets.
+```shell
+php artisan vendor:publish --provider="Emilianotisato\NovaTinyMCE\FieldServiceProvider"
 ```
-    'tinymce_api_key' => env('TINYMCE_API_KEY'),
-```
-
-and add the `TINYMCE_API_KEY` to your .env file with the key from tiny.cloud website.
 
 ## Usage
 
@@ -41,15 +37,16 @@ use Emilianotisato\NovaTinyMCE\NovaTinyMCE;
     }
 ```
 
-By default, the editor comes with default options and the image without the filemanager.
+By default, the editor comes with some basic options and the image management without the filemanager (inserted just as links).
+
 You can use custome options like this:
 
 ```php
 NovaTinyMCE::make('body')->options([
                 'plugins' => [
-                    'advlist autolink lists link image charmap print preview hr anchor pagebreak'
+                    'lists preview hr anchor pagebreak image wordcount fullscreen directionality paste textpattern'
                 ],
-                'toolbar' => 'insertfile undo redo | styleselect | bold italic'
+                'toolbar' => 'undo redo | styleselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | image | bullist numlist outdent indent | link'
             ]),
 ```
 
@@ -60,17 +57,18 @@ Now if you need to upload images from the text editor, we need to install [UniSh
 ```php
 NovaTinyMCE::make('body')->options([
                 'plugins' => [
-                    'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-                    'searchreplace wordcount visualblocks visualchars code fullscreen',
-                    'insertdatetime media nonbreaking save table contextmenu directionality',
-                    'emoticons template paste textcolor colorpicker textpattern'
+                    'lists preview hr anchor pagebreak image wordcount fullscreen directionality paste textpattern'
                 ],
-                'toolbar' => 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media',
+                'toolbar' => 'undo redo | styleselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | image | bullist numlist outdent indent | link',
                 'use_lfm' => true
-                ]),
+            ]),
 ```
 
-In case you change the `laravel-filemanager` URL in the package config file, you need to pass that info to this nova field with the `lfm_url` key in the options array.
+The last step is to run this command to fix some Filemanager files: `php artisan nova-tinymcs:suport-lfm`
+
+*IMPORTANT:* if you are in laravel 6 you will need to import the helper lib cos Filemanager need them: `composer require laravel/helpers`.
+
+Optional, in case you change the `laravel-filemanager` URL in the package config file, you need to pass that info to this nova field with the `lfm_url` key in the options array.
 
 ```php
 // ...
@@ -92,4 +90,4 @@ For example, you like to have increased the height of the text area:
 ```
 
 You can see the full list of parameters in the docs:
-[https://www.tiny.cloud/docs-3x/reference/Configuration3x/](https://www.tiny.cloud/docs-3x/reference/Configuration3x/)
+[https://www.tiny.cloud/docs/configure/](https://www.tiny.cloud/docs/configure/)
