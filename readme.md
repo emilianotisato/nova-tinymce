@@ -91,3 +91,13 @@ For example, you like to have increased the height of the text area:
 
 You can see the full list of parameters in the docs:
 [https://www.tiny.cloud/docs/configure/](https://www.tiny.cloud/docs/configure/)
+
+### Using JSON syntax on attribute property
+
+If you use JSON syntax on attribute name, TinyMCE won't initialize because the default id will be an invalid HTML id attribute. 
+To solve this you can define a custom id. For example:
+
+```php
+    NovaTinyMCE::make('Value', 'text->en')->id('custom-id');
+```
+ 
