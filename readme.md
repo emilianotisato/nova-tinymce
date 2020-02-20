@@ -12,6 +12,46 @@ Run the command bellow, to publish TinyMCE JavaScript and CSS assets.
 php artisan vendor:publish --provider="Emilianotisato\NovaTinyMCE\FieldServiceProvider"
 ```
 
+## Configuration
+
+You can optionally publish the config file with:
+
+```bash
+php artisan vendor:publish --provider="Emilianotisato\NovaTinyMCE\FieldServiceProvider" --tag="config"
+```
+
+This is the contents of the published config file:
+
+```php
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Options
+    |--------------------------------------------------------------------------
+    |
+    | Here you can define the options that are passed to all NovaTinyMCE
+    | fields by default.
+    |
+    */
+
+    'default_options' => [
+        'content_css' => '/vendor/tinymce/skins/ui/oxide/content.min.css',
+        'skin_url' => '/vendor/tinymce/skins/ui/oxide',
+        'path_absolute' => '/',
+        'plugins' => [
+            'lists preview hr anchor pagebreak image wordcount fullscreen directionality paste textpattern'
+        ],
+        'toolbar' => 'undo redo | styleselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | image | bullist numlist outdent indent | link',
+        'relative_urls' => false,
+        'use_lfm' => false,
+        'lfm_url' => 'laravel-filemanager'
+    ],
+];
+```
+
 ## Usage
 
 In your Nova resource add the use declaration and use the NovaTinyMCE field:

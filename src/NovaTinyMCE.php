@@ -23,19 +23,8 @@ class NovaTinyMCE extends Field
         parent::__construct($name, $attribute, $resolveCallback);
 
         $this->withMeta([
-                'options' => [
-                    'content_css' => '/vendor/tinymce/skins/ui/oxide/content.min.css',
-                    'skin_url' => '/vendor/tinymce/skins/ui/oxide',
-                    'path_absolute' => '/',
-                    'plugins' => [
-                        'lists preview hr anchor pagebreak image wordcount fullscreen directionality paste textpattern'
-                    ],
-                    'toolbar' => 'undo redo | styleselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | image | bullist numlist outdent indent | link',
-                    'relative_urls' => false,
-                    'use_lfm' => false,
-                    'lfm_url' => 'laravel-filemanager'
-                ]
-            ]);
+            'options' => config('nova-tinymce.default_options')
+        ]);
     }
 
     /**
@@ -50,11 +39,9 @@ class NovaTinyMCE extends Field
     {
         $currentOptions = $this->meta['options'];
 
-        return $this->withMeta(
-            [
+        return $this->withMeta([
             'options' => array_merge($currentOptions, $options)
-            ]
-        );
+        ]);
     }
 
     /**
@@ -64,7 +51,9 @@ class NovaTinyMCE extends Field
      */
     public function id($id)
     {
-        $this->withMeta(['id' => $id]);
+        $this->withMeta([
+            'id' => $id
+        ]);
 
         return $this;
     }
