@@ -18,7 +18,7 @@ class NovaTinyMCE extends Field
      */
     public $component = 'Nova-TinyMCE';
 
-    public function __construct(string $name, ?string $attribute = null, ?mixed $resolveCallback = null)
+    public function __construct(string $name, ?string $attribute = null, ?callable $resolveCallback = null)
     {
         parent::__construct($name, $attribute, $resolveCallback);
 
