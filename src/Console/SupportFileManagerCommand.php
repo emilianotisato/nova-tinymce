@@ -13,7 +13,7 @@ class SupportFileManagerCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'nova-tinymcs:suport-lfm';
+    protected $signature = 'nova-tinymce:suport-lfm';
 
     /**
      * The console command description.
