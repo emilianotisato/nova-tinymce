@@ -104,7 +104,10 @@ NovaTinyMCE::make('body')->options([
             ]),
 ```
 
-The last step is to run this command to fix some Filemanager files: `php artisan nova-tinymce:suport-lfm`
+The last step is to run this command to fix some Filemanager files: 
+```shell
+php artisan nova-tinymce:suport-lfm
+```
 
 *IMPORTANT:* if you are in laravel 6 you will need to import the helper lib cos Filemanager need them: `composer require laravel/helpers`.
 
