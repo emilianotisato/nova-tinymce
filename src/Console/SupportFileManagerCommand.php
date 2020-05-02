@@ -41,19 +41,24 @@ class SupportFileManagerCommand extends Command
     {
         $this->info('Fixing Filemanager files...');
 
-        // Delete files that need to be override
-        File::delete(
-            [
-                resource_path('views/vendor/laravel-filemanager/index.blade.php'),
-            ]
-        );
+        if (File::isFile(resource_path('views/vendor/laravel-filemanager/index.blade.php'))) {
+            // Delete files that need to be override
+            File::delete(
+                [
+                    resource_path('views/vendor/laravel-filemanager/index.blade.php'),
+                ]
+            );
+        }
+
+        if (! File::isDirectory(resource_path('views/vendor/laravel-filemanager'))) {
+            File::makeDirectory(resource_path('views/vendor/laravel-filemanager'));
+        }
 
         // Copy stubs
         File::copy(
             __DIR__ . '/stubs/laravel-filemanager/index.blade.php',
             resource_path('views/vendor/laravel-filemanager/index.blade.php')
         );
-
 
         $this->info("Installation was successful!" . PHP_EOL);
     }
