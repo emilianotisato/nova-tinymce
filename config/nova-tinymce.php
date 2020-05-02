@@ -22,6 +22,6 @@ return [
         'toolbar' => 'undo redo | styleselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | image | bullist numlist outdent indent | link',
         'relative_urls' => false,
         'use_lfm' => false,
-        'lfm_url' => 'laravel-filemanager'
+        'lfm_url' => 'filemanager'
     ],
 ];
