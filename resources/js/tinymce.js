@@ -21,6 +21,7 @@ import 'tinymce/plugins/wordcount';
 import 'tinymce/plugins/visualblocks';
 import 'tinymce/plugins/visualchars';
 import 'tinymce/plugins/code';
+import 'tinymce/plugins/codesample';
 import 'tinymce/plugins/fullscreen';
 import 'tinymce/plugins/insertdatetime';
 import 'tinymce/plugins/media';
