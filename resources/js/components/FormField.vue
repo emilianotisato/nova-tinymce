@@ -1,5 +1,5 @@
 <template>
-    <default-field :field="field" :full-width-content="true">
+    <default-field :field="field" :full-width-content="true" :show-help-text="showHelpText">
         <template slot="field">
             <editor :id="field.id || field.attribute"
                     v-model="value"
