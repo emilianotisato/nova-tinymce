@@ -26,6 +26,7 @@ class FieldServiceProvider extends ServiceProvider
 
         Nova::serving(function (ServingNova $event) {
             Nova::script('Nova-TinyMCE-tinymce', __DIR__.'/../dist/js/tinymce.js');
+            Nova::script('Nova-TinyMCE-tinymce-icon', __DIR__.'/../dist/js/icons/default/icons.js');
             Nova::script('Nova-TinyMCE', __DIR__.'/../dist/js/field.js');
             Nova::style('Nova-TinyMCE', __DIR__.'/../dist/css/field.css');
         });
