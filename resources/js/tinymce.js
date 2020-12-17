@@ -35,3 +35,4 @@ import 'tinymce/plugins/template';
 import 'tinymce/plugins/paste';
 import 'tinymce/plugins/textcolor';
 import 'tinymce/plugins/textpattern';
+import 'tinymce/icons/default';
