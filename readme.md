@@ -68,7 +68,7 @@ NovaTinyMCE::make('body')->options([
 
 If you use LFM v1 , the last step is to run this command to fix some Filemanager files: 
 ```shell
-php artisan nova-tinymce:suport-lfm
+php artisan nova-tinymce:support-lfm
 ```
 
 Finally you will need to update the `lfm_url` key to match the old url version like this `lfm_url' => 'laravel-filemanager`.
