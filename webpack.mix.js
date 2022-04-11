@@ -1,8 +1,12 @@
 let mix = require('laravel-mix')
+let path = require('path')
 
-mix.setPublicPath('dist')
-   .js('resources/js/field.js', 'js')
-   .js('resources/js/tinymce.js', 'js')
-   .sass('resources/sass/field.scss', 'css');
+require('./mix')
 
-mix.copyDirectory('node_modules/tinymce/skins', 'dist/tinymce/skins');
+mix
+    .setPublicPath('dist')
+    .js('resources/js/field.js', 'js')
+    .sass('resources/sass/field.scss', 'css')
+    .copyDirectory('node_modules/tinymce/skins', 'dist/tinymce/skins')
+    .vue({ version: 3 })
+    .nova('emilianotisato/nova-tinymce')

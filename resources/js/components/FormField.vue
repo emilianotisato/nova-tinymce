@@ -1,10 +1,10 @@
 <template>
-    <default-field :field="field" :full-width-content="true" :show-help-text="showHelpText">
-        <template slot="field">
-            <editor :id="field.id || field.attribute"
+    <DefaultField :field="currentField" :full-width-content="true" :show-help-text="showHelpText">
+        <template #field>
+            <editor :id="currentField.id || currentField.attribute"
                     v-model="value"
                     :class="errorClasses"
-                    :placeholder="field.name"
+                    :placeholder="currentField.name"
                     :init="options"
             ></editor>
 
@@ -12,17 +12,17 @@
                 {{ firstError }}
             </p>
         </template>
-    </default-field>
+    </DefaultField>
 </template>
 
 <script>
-import { FormField, HandlesValidationErrors } from 'laravel-nova'
+import { DependentFormField, HandlesValidationErrors } from 'laravel-nova'
 import Editor from '@tinymce/tinymce-vue'
 
 export default {
     components: { Editor },
 
-    mixins: [FormField, HandlesValidationErrors],
+    mixins: [DependentFormField, HandlesValidationErrors],
 
     props: ['resourceName', 'resourceId', 'field'],
 
@@ -32,6 +32,13 @@ export default {
 
             if (options.use_lfm) {
                 options['file_picker_callback'] = this.filePicker
+            }
+
+            if (options.use_dark && options.content_css_dark && options.skin_url_dark) {
+                if (document.documentElement.classList.contains('dark')) {
+                    options['content_css'] = options['content_css_dark']
+                    options['skin_url'] = options['skin_url_dark']
+                }
             }
 
             return options
@@ -77,7 +84,6 @@ export default {
                 }
             });
         }
-
     }
 }
 </script>
