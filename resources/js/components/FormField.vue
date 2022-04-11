@@ -41,6 +41,9 @@ export default {
                 }
             }
 
+            // Compatibility, remove plugins
+            // delete options['plugins']
+
             return options
         }
     },
