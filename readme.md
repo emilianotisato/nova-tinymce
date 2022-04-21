@@ -5,6 +5,12 @@ This Nova package allow you to use [TinyMCE editor](https://tiny.cloud) for text
 
 ## Installation
 
+(backward compatibility)
+| Nova  | Package |
+| ------------- | ------------- |
+| V 1, 2, 3  | V 1  |
+| V 4  | V 2 |
+
 ```shell
 composer require emilianotisato/nova-tinymce
 ```
