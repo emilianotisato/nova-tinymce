@@ -2,14 +2,16 @@
 
 namespace Emilianotisato\NovaTinyMCE;
 
-use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Fields\Expandable;
+use Laravel\Nova\Fields\Field;
 
 class NovaTinyMCE extends Field
 {
     use Expandable;
 
     public $showOnIndex = false;
+
+    public $asHtml = true;
 
     /**
      * The field's component.
@@ -23,8 +25,15 @@ class NovaTinyMCE extends Field
         parent::__construct($name, $attribute, $resolveCallback);
 
         $this->withMeta([
-            'options' => config('nova-tinymce.default_options')
+            'options' => config('nova-tinymce.default_options'),
         ]);
+    }
+
+    public function asHtml(bool $asHtml = true)
+    {
+        $this->asHtml = $asHtml;
+
+        return $this;
     }
 
     /**
@@ -32,7 +41,7 @@ class NovaTinyMCE extends Field
      * Consult the TinyMCE documentation [https://github.com/tinymce/tinymce-vue]
      * to view the list of all the available options.
      *
-     * @param  array $options
+     * @param  array  $options
      * @return self
      */
     public function options(array $options)
@@ -40,7 +49,7 @@ class NovaTinyMCE extends Field
         $currentOptions = $this->meta['options'];
 
         return $this->withMeta([
-            'options' => array_merge($currentOptions, $options)
+            'options' => array_merge($currentOptions, $options),
         ]);
     }
 
@@ -52,7 +61,7 @@ class NovaTinyMCE extends Field
     public function id($id)
     {
         $this->withMeta([
-            'id' => $id
+            'id' => $id,
         ]);
 
         return $this;
@@ -66,6 +75,7 @@ class NovaTinyMCE extends Field
     public function jsonSerialize(): array
     {
         return array_merge(parent::jsonSerialize(), [
+            'asHtml' => $this->asHtml,
             'shouldShow' => $this->shouldBeExpanded(),
         ]);
     }
