@@ -53,7 +53,7 @@ NovaTinyMCE::make('body')->options([
                 'plugins' => [
                     'lists preview hr anchor pagebreak image wordcount fullscreen directionality paste textpattern'
                 ],
-                'toolbar' => 'undo redo | styleselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | image | bullist numlist outdent indent | link'
+                'toolbar' => 'undo redo | styles | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | image | bullist numlist outdent indent | link'
             ]),
 ```
 
@@ -66,7 +66,7 @@ NovaTinyMCE::make('body')->options([
                 'plugins' => [
                     'lists preview hr anchor pagebreak image wordcount fullscreen directionality paste textpattern'
                 ],
-                'toolbar' => 'undo redo | styleselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | image | bullist numlist outdent indent | link',
+                'toolbar' => 'undo redo | styles | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | image | bullist numlist outdent indent | link',
                 'use_lfm' => true
             ]),
 ```
@@ -126,7 +126,7 @@ return [
         'plugins' => [
             'lists preview hr anchor pagebreak image wordcount fullscreen directionality paste textpattern'
         ],
-        'toolbar' => 'undo redo | styleselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | image | bullist numlist outdent indent | link',
+        'toolbar' => 'undo redo | styles | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | image | bullist numlist outdent indent | link',
         'relative_urls' => false,
         'use_lfm' => false,
         'lfm_url' => 'filemanager'
