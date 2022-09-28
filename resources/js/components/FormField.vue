@@ -1,10 +1,10 @@
 <template>
-    <DefaultField :field="currentField" :full-width-content="true" :show-help-text="showHelpText">
+    <DefaultField :field="field" :full-width-content="true" :show-help-text="showHelpText">
         <template #field>
-            <editor :id="currentField.id || currentField.attribute"
+            <editor :id="field.id"
                     v-model="value"
                     :class="errorClasses"
-                    :placeholder="currentField.name"
+                    :placeholder="field.name"
                     :init="options"
             ></editor>
 

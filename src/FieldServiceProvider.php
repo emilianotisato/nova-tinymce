@@ -24,6 +24,8 @@ class FieldServiceProvider extends ServiceProvider
             __DIR__.'/../config/nova-tinymce.php' => config_path('nova-tinymce.php'),
         ], 'config');
 
+        $this->publishes([__DIR__.'/../dist/tinymce' => public_path('vendor/tinymce')], ['nova-assets', 'laravel-assets']);
+
         Nova::serving(function (ServingNova $event) {
             Nova::script('Nova-TinyMCE-tinymce', __DIR__.'/../dist/js/tinymce.js');
             Nova::script('Nova-TinyMCE', __DIR__.'/../dist/js/field.js');
