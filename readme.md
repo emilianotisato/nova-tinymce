@@ -51,9 +51,9 @@ You can use custome options like this:
 ```php
 NovaTinyMCE::make('body')->options([
                 'plugins' => [
-                    'lists preview hr anchor pagebreak image wordcount fullscreen directionality paste textpattern'
+                    'lists','preview','anchor','pagebreak','image','wordcount','fullscreen','directionality'
                 ],
-                'toolbar' => 'undo redo | styleselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | image | bullist numlist outdent indent | link'
+                'toolbar' => 'undo redo | styles | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | image | bullist numlist outdent indent | link'
             ]),
 ```
 
@@ -64,9 +64,9 @@ Now if you need to upload images from the text editor, we need to install [UniSh
 ```php
 NovaTinyMCE::make('body')->options([
                 'plugins' => [
-                    'lists preview hr anchor pagebreak image wordcount fullscreen directionality paste textpattern'
+                    'lists','preview','anchor','pagebreak','image','wordcount','fullscreen','directionality'
                 ],
-                'toolbar' => 'undo redo | styleselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | image | bullist numlist outdent indent | link',
+                'toolbar' => 'undo redo | styles | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | image | bullist numlist outdent indent | link',
                 'use_lfm' => true
             ]),
 ```
@@ -124,9 +124,9 @@ return [
         'skin_url' => '/vendor/tinymce/skins/ui/oxide',
         'path_absolute' => '/',
         'plugins' => [
-            'lists preview hr anchor pagebreak image wordcount fullscreen directionality paste textpattern'
+            'lists','preview','anchor','pagebreak','image','wordcount','fullscreen','directionality'
         ],
-        'toolbar' => 'undo redo | styleselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | image | bullist numlist outdent indent | link',
+        'toolbar' => 'undo redo | styles | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | image | bullist numlist outdent indent | link',
         'relative_urls' => false,
         'use_lfm' => false,
         'lfm_url' => 'filemanager'
