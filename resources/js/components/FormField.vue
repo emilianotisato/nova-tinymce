@@ -1,5 +1,5 @@
 <template>
-    <DefaultField :field="currentField" :full-width-content="true" :show-help-text="showHelpText">
+    <DefaultField :field="currentField" :full-width-content="true" :show-help-text="showHelpText" :key="editorKey">
         <template #field>
             <editor :id="currentField.id || currentField.attribute"
                     v-model="value"
@@ -26,6 +26,12 @@ export default {
 
     props: ['resourceName', 'resourceId', 'field'],
 
+    data() {
+        return {
+            editorKey: 0
+        };
+    },
+
     computed: {
         options() {
             let options = this.field.options
@@ -45,44 +51,56 @@ export default {
         }
     },
 
+    mounted() {
+        Nova.$on('flexible-content-order-changed', this.incrementKey);
+    },
+
+    unmounted() {
+        Nova.$off('flexible-content-order-changed', this.incrementKey);
+    },
+
     methods: {
         /*
          * Set the initial, internal value for the field.
          */
         setInitialValue() {
-          this.value = this.field.value || ''
+            this.value = this.field.value || ''
         },
 
         /**
          * Fill the given FormData object with the field's internal value.
          */
         fill(formData) {
-          formData.append(this.field.attribute, this.value || '')
+            formData.append(this.field.attribute, this.value || '')
         },
 
         /**
          * Update the field's internal value.
          */
         handleChange(value) {
-          this.value = value
+            this.value = value
         },
 
         filePicker: function (callback, value, meta) {
             let x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
-            let y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
+            let y = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight;
 
             let type = 'image' === meta.filetype ? 'Images' : 'Files';
-            let url  = this.options.path_absolute + this.options.lfm_url + '?editor=tinymce5&type=' + type;
+            let url = this.options.path_absolute + this.options.lfm_url + '?editor=tinymce5&type=' + type;
 
             tinymce.activeEditor.windowManager.openUrl({
-                url : url,
-                title : 'File manager',
-                width : x * 0.8,
-                height : y * 0.8,
+                url: url,
+                title: 'File manager',
+                width: x * 0.8,
+                height: y * 0.8,
                 onMessage: (api, message) => {
                     callback(message.content);
                 }
             });
+        },
+
+        incrementKey() {
+            this.editorKey++;
         }
     }
 }
