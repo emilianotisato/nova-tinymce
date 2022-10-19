@@ -1,31 +1,40 @@
 {
-    "name": "emilianotisato/nova-tinymce",
-    "description": "This Nova package allow you to use TinyMCE editor for text areas.You can customize the editor options and... you can upload images to your server and put them rigth there on the text without leaving the text editor!",
-    "keywords": [
-        "laravel",
-        "nova",
-        "editor",
-        "tiny"
-    ],
-    "license": "MIT",
-    "require": {
-        "php": "^7.3|^8.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Emilianotisato\\NovaTinyMCE\\": "src/"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Emilianotisato\\NovaTinyMCE\\FieldServiceProvider"
-            ]
-        }
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+  "name": "emilianotisato/nova-tinymce",
+  "description": "This Nova package allow you to use TinyMCE editor for text areas.You can customize the editor options and... you can upload images to your server and put them rigth there on the text without leaving the text editor!",
+  "keywords": [
+    "laravel",
+    "nova",
+    "editor",
+    "tiny"
+  ],
+  "license": "MIT",
+  "require": {
+    "php": "^7.3|^8.0"
+  },
+  "require-dev": {
+    "laravel/nova": "^4.16"
+  },
+  "autoload": {
+    "psr-4": {
+      "Emilianotisato\\NovaTinyMCE\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Emilianotisato\\NovaTinyMCE\\FieldServiceProvider"
+      ]
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://nova.laravel.com"
+    }
+  ]
 }
