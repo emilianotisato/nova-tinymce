@@ -1,7 +1,7 @@
 let mix = require('laravel-mix')
 let path = require('path')
 
-require('./mix')
+require('./nova.mix')
 
 mix
     .setPublicPath('dist')
@@ -10,4 +10,11 @@ mix
     .sass('resources/sass/field.scss', 'css')
     .copyDirectory('node_modules/tinymce/skins', 'dist/tinymce/skins')
     .vue({ version: 3 })
+    .webpackConfig({
+        // stats: { children: true },
+        externals: {
+            vue: 'Vue',
+            'laravel-nova': 'LaravelNova',
+        }
+    })
     .nova('emilianotisato/nova-tinymce')
