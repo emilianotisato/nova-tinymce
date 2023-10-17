@@ -53,10 +53,18 @@ export default {
 
       return options
     },
+
+    isTranslatable() {
+      // Check if the field is translatable
+      return this.currentField.translatable && this.currentField.translatable.active;
+    },
+
     dynamicID() {
-      // Check if the ID has a '.' indicating it's being used by nova-translatable
-      if (this.currentField.id && this.currentField.id.includes('.')) {
-        return this.currentField.id;
+      // Check if the field is translatable
+      if (this.currentField.translatable) {
+        return this.currentField.id.includes('.')
+            ? this.currentField.id
+            : `${this.currentField.id || this.currentField.attribute}.${this.activeLocale}`;
       }
       return this.currentField.id || this.currentField.attribute;
     }

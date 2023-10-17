@@ -531,10 +531,14 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       }
       return options;
     },
+    isTranslatable: function isTranslatable() {
+      // Check if the field is translatable
+      return this.currentField.translatable && this.currentField.translatable.active;
+    },
     dynamicID: function dynamicID() {
-      // Check if the ID has a '.' indicating it's being used by nova-translatable
-      if (this.currentField.id && this.currentField.id.includes('.')) {
-        return this.currentField.id;
+      // Check if the field is translatable
+      if (this.currentField.translatable) {
+        return this.currentField.id.includes('.') ? this.currentField.id : "".concat(this.currentField.id || this.currentField.attribute, ".").concat(this.activeLocale);
       }
       return this.currentField.id || this.currentField.attribute;
     }
