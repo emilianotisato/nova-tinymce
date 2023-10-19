@@ -2,8 +2,8 @@
 
 namespace Emilianotisato\NovaTinyMCE;
 
-use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Fields\Expandable;
+use Laravel\Nova\Fields\Field;
 
 class NovaTinyMCE extends Field
 {
@@ -49,7 +49,6 @@ class NovaTinyMCE extends Field
         $currentOptions = $this->meta['options'];
 
         return $this->withMeta([
-            'asHtml' => true,
             'options' => array_merge($currentOptions, $options)
         ]);
     }
