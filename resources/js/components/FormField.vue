@@ -8,7 +8,7 @@
                     :init="options"
             ></editor>
 
-            <p v-if="hasError" class="my-2 text-danger">
+          <p v-if="hasError" class="help-text help-text-error">
                 {{ firstError }}
             </p>
         </template>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { DependentFormField, HandlesValidationErrors } from 'laravel-nova'
+import {DependentFormField, HandlesValidationErrors} from 'laravel-nova'
 import Editor from '@tinymce/tinymce-vue'
 
 export default {
