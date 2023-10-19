@@ -49,7 +49,8 @@ class NovaTinyMCE extends Field
         $currentOptions = $this->meta['options'];
 
         return $this->withMeta([
-            'options' => array_merge($currentOptions, $options),
+            'asHtml' => true,
+            'options' => array_merge($currentOptions, $options)
         ]);
     }
 
