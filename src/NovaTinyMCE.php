@@ -49,7 +49,7 @@ class NovaTinyMCE extends Field
         $currentOptions = $this->meta['options'];
 
         return $this->withMeta([
-            'options' => array_merge($currentOptions, $options),
+            'options' => array_merge($currentOptions, $options)
         ]);
     }
 

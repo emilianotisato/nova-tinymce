@@ -1,26 +1,26 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "mix --production",
-        "nova:install": "npm --prefix='vendor/laravel/nova' ci"
-    },
-    "devDependencies": {
-        "@tinymce/tinymce-vue": "^5.0.0",
-        "@vue/compiler-sfc": "^3.2.22",
-        "form-backend-validation": "^2.3.3",
-        "laravel-mix": "^6.0.49",
-        "lodash": "^4.17.21",
-        "postcss": "^8.3.11",
-        "resolve-url-loader": "^5.0.0",
-        "sass": "^1.55.0",
-        "sass-loader": "^12.6.0",
-        "tinymce": "^6.1.2",
-        "vue-loader": "^16.8.3"
-    }
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production",
+    "nova:install": "npm --prefix='./vendor/laravel/nova' ci"
+  },
+  "devDependencies": {
+    "@tinymce/tinymce-vue": "^5.0.0",
+    "@vue/compiler-sfc": "^3.2.41",
+    "form-backend-validation": "^2.4.0",
+    "laravel-mix": "^6.0.49",
+    "lodash": "^4.17.21",
+    "postcss": "^8.4.18",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.50.0",
+    "sass-loader": "^12.6.0",
+    "tinymce": "^6.2.0",
+    "vue-loader": "^17.0.0"
+  }
 }

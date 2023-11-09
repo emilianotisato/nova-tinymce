@@ -1,14 +1,15 @@
 <template>
-    <DefaultField :field="field" :full-width-content="true" :show-help-text="showHelpText">
+    <DefaultField :key="editorKey" :field="field" :full-width-content="true" :show-help-text="showHelpText">
         <template #field>
-            <editor :id="field.id"
+            <Editor :id="field.id"
                     v-model="value"
+                    :api-key="apiKey"
                     :class="errorClasses"
-                    :placeholder="field.name"
                     :init="options"
-            ></editor>
+                    :placeholder="field.name"
+            />
 
-            <p v-if="hasError" class="my-2 text-danger">
+            <p v-if="hasError" class="help-text help-text-error">
                 {{ firstError }}
             </p>
         </template>
@@ -16,15 +17,21 @@
 </template>
 
 <script>
-import { DependentFormField, HandlesValidationErrors } from 'laravel-nova'
+import {DependentFormField, HandlesValidationErrors} from 'laravel-nova'
 import Editor from '@tinymce/tinymce-vue'
 
 export default {
-    components: { Editor },
+    components: {Editor},
 
     mixins: [DependentFormField, HandlesValidationErrors],
 
     props: ['resourceName', 'resourceId', 'field'],
+
+    data() {
+        return {
+            editorKey: 0
+        };
+    },
 
     computed: {
         options() {
@@ -42,7 +49,18 @@ export default {
             }
 
             return options
+        },
+        apiKey() {
+            return this.options.api_key;
         }
+    },
+
+    mounted() {
+        Nova.$on('flexible-content-order-changed', this.incrementKey);
+    },
+
+    unmounted() {
+        Nova.$off('flexible-content-order-changed', this.incrementKey);
     },
 
     methods: {
@@ -50,39 +68,43 @@ export default {
          * Set the initial, internal value for the field.
          */
         setInitialValue() {
-          this.value = this.field.value || ''
+            this.value = this.field.value || ''
         },
 
         /**
          * Fill the given FormData object with the field's internal value.
          */
         fill(formData) {
-          formData.append(this.field.attribute, this.value || '')
+            formData.append(this.field.attribute, this.value || '')
         },
 
         /**
          * Update the field's internal value.
          */
         handleChange(value) {
-          this.value = value
+            this.value = value
         },
 
         filePicker: function (callback, value, meta) {
             let x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
-            let y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
+            let y = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight;
 
             let type = 'image' === meta.filetype ? 'Images' : 'Files';
-            let url  = this.options.path_absolute + this.options.lfm_url + '?editor=tinymce5&type=' + type;
+            let url = this.options.path_absolute + this.options.lfm_url + '?editor=tinymce5&type=' + type;
 
             tinymce.activeEditor.windowManager.openUrl({
-                url : url,
-                title : 'File manager',
-                width : x * 0.8,
-                height : y * 0.8,
+                url: url,
+                title: 'File manager',
+                width: x * 0.8,
+                height: y * 0.8,
                 onMessage: (api, message) => {
                     callback(message.content);
                 }
             });
+        },
+
+        incrementKey() {
+            this.editorKey++;
         }
     }
 }
