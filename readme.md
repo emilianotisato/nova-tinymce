@@ -1,9 +1,8 @@
-# Important! This package is not maintained anymore. If someone has the time and want to do it I can give you ownership
-
 ## Laravel Nova TinyMCE editor (with images upload capabilities!)
 
 This Nova package allow you to use [TinyMCE editor](https://tiny.cloud) for text areas. You can customize the editor options and... you can **upload images to your server** and put them right there on the content without leaving the text editor!!
-![Editor](docs/img.png)
+![Editor](https://github.com/emilianotisato/nova-tinymce/assets/25797257/8f19556d-d93c-4a97-9337-3c21d059ffc0)
+
 
 ## Installation
 
