@@ -1,14 +1,15 @@
 <template>
-    <DefaultField :field="field" :full-width-content="true" :show-help-text="showHelpText" :key="editorKey">
+    <DefaultField :key="editorKey" :field="field" :full-width-content="true" :show-help-text="showHelpText">
         <template #field>
-            <editor :id="field.id"
+            <Editor :id="field.id"
                     v-model="value"
+                    :api-key="apiKey"
                     :class="errorClasses"
-                    :placeholder="field.name"
                     :init="options"
-            ></editor>
+                    :placeholder="field.name"
+            />
 
-          <p v-if="hasError" class="help-text help-text-error">
+            <p v-if="hasError" class="help-text help-text-error">
                 {{ firstError }}
             </p>
         </template>
@@ -20,7 +21,7 @@ import {DependentFormField, HandlesValidationErrors} from 'laravel-nova'
 import Editor from '@tinymce/tinymce-vue'
 
 export default {
-    components: { Editor },
+    components: {Editor},
 
     mixins: [DependentFormField, HandlesValidationErrors],
 
@@ -48,6 +49,9 @@ export default {
             }
 
             return options
+        },
+        apiKey() {
+            return this.options.api_key;
         }
     },
 
